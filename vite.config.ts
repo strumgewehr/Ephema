@@ -37,7 +37,7 @@ export default defineConfig(async () => {
       fs: {
         strict: true,
         deny; ["**/.*"],
-      },
+      
     },
   };
 });
