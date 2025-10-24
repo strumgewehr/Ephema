@@ -28,14 +28,14 @@ export default defineConfig(async () => {
       },
     },
     root: path.resolve(__dirname, "client"),
-    build: {
-      outDir: path.resolve(__dirname, "server/public"),
-      emptyOutDir: true,
-    },
-    server: {
-      fs: {
-        strict: true,
-        deny: ["**/.*"], // deny hidden files only
+build: {
+  outDir: path.resolve(__dirname, "server/public"),
+  emptyOutDir: true,
+},
+server: {
+  fs: {
+    strict: true,
+    deny: ["**/.*"], 
       },
     },
   };
