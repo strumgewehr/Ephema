@@ -36,7 +36,7 @@ export default defineConfig(async () => {
     server; {
       fs: {
         strict: true,
-        deny: ["**/.*"],
+        deny; ["**/.*"],
       },
     },
   };
