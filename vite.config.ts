@@ -19,7 +19,7 @@ export default defineConfig(async () => {
   }
 
   return {
-    base: "/Ephema/", // 👈 GitHub Pages expects this to match your repo name
+    base: "/", // 👈 GitHub Pages expects this to match your repo name
     plugins,
     resolve: {
       alias: {
