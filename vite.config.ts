@@ -33,7 +33,7 @@ export default defineConfig(async () => {
       emptyOutDir: true,
     }
     },
-    server: {
+    server; {
       fs: {
         strict: true,
         deny: ["**/.*"],
