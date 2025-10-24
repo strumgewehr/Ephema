@@ -19,6 +19,7 @@ export default defineConfig(async () => {
   }
 
   return {
+    base: "/Ephema/", // 👈 GitHub Pages expects this to match your repo name
     plugins,
     resolve: {
       alias: {
@@ -28,14 +29,14 @@ export default defineConfig(async () => {
       },
     },
     root: path.resolve(__dirname, "client"),
-build: {
-  outDir: path.resolve(__dirname, "server/public"),
-  emptyOutDir: true,
-},
-server: {
-  fs: {
-    strict: true,
-    deny: ["**/.*"], 
+    build: {
+      outDir: path.resolve(__dirname, "dist"), // GitHub Pages prefers dist/
+      emptyOutDir: true,
+    },
+    server: {
+      fs: {
+        strict: true,
+        deny: ["**/.*"], // deny hidden files only
       },
     },
   };
