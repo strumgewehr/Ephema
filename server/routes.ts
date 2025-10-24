@@ -24,9 +24,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         switch (message.type) {
           case 'create_room': {
             // Use provided userId if valid and not already in use by another socket
-            const providedUserId = message.payload?.userId;
+            const providedUserId = message.payload?.userId as string | undefined;
             if (providedUserId && typeof providedUserId === 'string' && !clients.has(providedUserId)) {
-              userId = providedUserId;
+              userId = providedUserId as ReturnType<typeof randomUUID>;
             }
             
             if (!isUserIdSet) {
@@ -60,12 +60,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
             }
 
             // Check if user is reconnecting with their previous ID
-            const providedUserId = message.payload?.userId;
+            const providedUserId = message.payload?.userId as string | undefined;
             const isReconnecting = providedUserId && room.users.includes(providedUserId);
             
             if (isReconnecting) {
               // User is reconnecting - reuse their existing ID
-              userId = providedUserId;
+              userId = providedUserId as ReturnType<typeof randomUUID>;
               // Update the client mapping
               clients.set(userId, ws);
               isUserIdSet = true;
@@ -84,7 +84,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
               
               // Use provided userId if valid and not already in use
               if (providedUserId && typeof providedUserId === 'string' && !clients.has(providedUserId)) {
-                userId = providedUserId;
+                userId = providedUserId as ReturnType<typeof randomUUID>;
               }
               
               if (!isUserIdSet) {
